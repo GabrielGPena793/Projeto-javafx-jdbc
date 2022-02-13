@@ -3,6 +3,8 @@ module com.uldemy.projetojavafxjdbc {
     requires javafx.fxml;
 
 
-    opens com.uldemy.projetojavafxjdbc to javafx.fxml;
-    exports com.uldemy.projetojavafxjdbc;
+    opens com.uldemy.application to javafx.fxml;
+    exports com.uldemy.application;
+    exports com.uldemy.gui;
+    opens com.uldemy.gui to javafx.fxml;
 }

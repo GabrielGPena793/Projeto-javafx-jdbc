@@ -9,8 +9,5 @@
         <module name="Projeto-javafx-jdbc" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Projeto-javafx-jdbc" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
