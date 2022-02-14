@@ -1,6 +1,7 @@
 package com.uldemy.gui;
 
 import com.uldemy.application.Main;
+import com.uldemy.gui.listeners.DataChangeListener;
 import com.uldemy.gui.util.Alerts;
 import com.uldemy.gui.util.Utils;
 import com.uldemy.model.entities.Department;
@@ -26,7 +27,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DepartmentListController implements Initializable {
+public class DepartmentListController implements Initializable, DataChangeListener {
 
     private DepartmentService service;
 
@@ -85,6 +86,7 @@ public class DepartmentListController implements Initializable {
             DepartmentFormController controller = loader.getController();
             controller.setDeparment(obj);
             controller.setService(new DepartmentService());
+            controller.subscribeDataChangeListener(this);
             controller.updateFormData();
 
             Stage dialogStage = new Stage();
@@ -98,5 +100,10 @@ public class DepartmentListController implements Initializable {
         catch (IOException e){
             Alerts.showAlert("IO Execption", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+
+    @Override
+    public void onDataChanged() {
+        upadateTableView();
     }
 }
