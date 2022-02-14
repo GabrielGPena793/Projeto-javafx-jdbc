@@ -1,6 +1,7 @@
 module com.uldemy {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.uldemy.application to javafx.fxml;
