@@ -2,20 +2,21 @@ package com.uldemy.model.services;
 
 import com.uldemy.model.dao.DaoFactory;
 import com.uldemy.model.dao.DepartmentDao;
+import com.uldemy.model.dao.SellerDao;
 import com.uldemy.model.entities.Department;
+import com.uldemy.model.entities.Seller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentService {
+public class SellerService {
 
-    private DepartmentDao dao = DaoFactory.createDepartmentDao();
+    private SellerDao dao = DaoFactory.createSellerDao();
 
-    public List<Department> findAll(){
+    public List<Seller> findAll(){
         return dao.findAll();
     }
 
-    public void saveOrUpadate(Department obj){
+    public void saveOrUpadate(Seller obj){
         if (obj.getId() == null){
             dao.insert(obj);
         }
@@ -23,7 +24,8 @@ public class DepartmentService {
             dao.update(obj);
         }
     }
-    public void remove(Department obj){
+
+    public void remove(Seller obj){
         dao.deleteById(obj.getId());
     }
 }
