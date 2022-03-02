@@ -6,6 +6,7 @@ import com.uldemy.gui.listeners.DataChangeListener;
 import com.uldemy.gui.util.Alerts;
 import com.uldemy.gui.util.Utils;
 import com.uldemy.model.entities.Seller;
+import com.uldemy.model.services.DepartmentService;
 import com.uldemy.model.services.SellerService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -108,7 +109,8 @@ public class SellerListController implements Initializable, DataChangeListener {
 
             SellerFormController controller = loader.getController();
             controller.setSeller(obj);
-            controller.setService(new SellerService());
+            controller.setServices(new SellerService(), new DepartmentService());
+            controller.loadAssociatedObjects();
             controller.subscribeDataChangeListener(this);
             controller.updateFormData();
 
@@ -121,6 +123,7 @@ public class SellerListController implements Initializable, DataChangeListener {
             dialogStage.showAndWait();
         }
         catch (IOException e){
+            e.printStackTrace();
             Alerts.showAlert("IO Execption", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
